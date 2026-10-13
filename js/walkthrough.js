@@ -25,39 +25,8 @@
     const preloader = document.getElementById('preloader-screen');
     if (!preloader) return;
 
-    const bar       = document.getElementById('preloader-progress-bar');
-    const pct       = document.getElementById('preloader-percent');
-    const statusEl  = document.getElementById('preloader-status-text');
-    const enterBtn  = document.getElementById('preloader-enter-btn');
-    const skipBtn   = document.getElementById('preloader-skip-btn');
-
-    const logs = [
-      "Booting Afrin's Developer Space...",
-      "Loading Java Full Stack modules...",
-      "Initialising 3D character engine...",
-      "Loading Capgemini Winner showcase...",
-      "Afrin Fathima is ready to guide you! ✨"
-    ];
-
-    let progress = 0;
-    const interval = setInterval(() => {
-      progress += Math.floor(Math.random() * 9) + 4;
-      if (progress > 100) progress = 100;
-      if (bar) bar.style.width = `${progress}%`;
-      if (pct) pct.innerText = `${progress}%`;
-      const logIdx = Math.min(Math.floor((progress / 100) * logs.length), logs.length - 1);
-      if (statusEl) statusEl.innerText = logs[logIdx];
-      if (progress >= 100) {
-        clearInterval(interval);
-        if (enterBtn) enterBtn.classList.remove('hidden');
-        setTimeout(() => {
-          if (!preloader.classList.contains('preloader-hidden')) dismissPreloader();
-        }, 900);
-      }
-    }, 50);
-
-    enterBtn && enterBtn.addEventListener('click', dismissPreloader);
-    skipBtn  && skipBtn.addEventListener('click', () => { clearInterval(interval); dismissPreloader(); });
+    // Auto-dismiss after a brief loading animation (1.2s)
+    setTimeout(dismissPreloader, 1200);
   }
 
   function dismissPreloader() {
