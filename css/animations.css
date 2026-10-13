@@ -1,0 +1,274 @@
+/* Animation Keyframes & Micro-Interactions */
+
+@keyframes floatSlow {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(2deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes floatGentle {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes floatDelayed {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(-3deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes planeFly {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  30% {
+    transform: translate(60px, -20px) rotate(4deg);
+  }
+  70% {
+    transform: translate(140px, -40px) rotate(-2deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+/* Helper Animation Classes */
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-float-gentle {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: floatDelayed 7s ease-in-out infinite 1.5s;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.plane-animation {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+/* Gradient Text */
+.gradient-text-purple {
+  background: linear-gradient(135deg, #7C3AED 0%, #6366F1 50%, #EC4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-blue {
+  background: linear-gradient(135deg, #0284C7 0%, #6366F1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Shimmer Card Effect */
+.shimmer-bg {
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* Scroll Reveal Classes */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Walkthrough & Companion Animations */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(16px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.04) translateY(-3px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-pop-in {
+  animation: popIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Audio Wave Visualizer Animations */
+@keyframes waveMotion {
+  0%, 100% { height: 6px; }
+  50% { height: 18px; }
+}
+
+.animate-wave-1 { animation: waveMotion 0.6s ease-in-out infinite; }
+.animate-wave-2 { animation: waveMotion 0.8s ease-in-out infinite 0.15s; }
+.animate-wave-3 { animation: waveMotion 0.5s ease-in-out infinite 0.3s; }
+.animate-wave-4 { animation: waveMotion 0.7s ease-in-out infinite 0.2s; }
+
+/* =========================================================================
+   LIVE WALKING CHARACTER ANIMATIONS
+   ========================================================================= */
+
+/* Gentle up-down bob when she's idle */
+@keyframes charIdleBob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%       { transform: translateY(-5px) rotate(1deg); }
+}
+
+/* Shadow pulsates with her bob */
+@keyframes shadowPulse {
+  0%, 100% { transform: scaleX(1);   opacity: 0.35; }
+  50%       { transform: scaleX(0.88); opacity: 0.22; }
+}
+
+/* Entrance pop for speech bubble */
+@keyframes speechBubblePop {
+  0%   { opacity: 0; transform: scale(0.88) translateY(-10px); }
+  65%  { opacity: 1; transform: scale(1.03) translateY(1px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.char-idle-bob {
+  animation: charIdleBob 3s ease-in-out infinite;
+}
+
+.char-shadow-pulse {
+  animation: shadowPulse 3s ease-in-out infinite;
+}
+
+
+@keyframes ladderPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.3), inset 0 0 10px rgba(167, 139, 250, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.6), inset 0 0 20px rgba(167, 139, 250, 0.4);
+  }
+}
+
+.animate-ladder-glow {
+  animation: ladderPulse 3s ease-in-out infinite;
+}
+
+@keyframes preloaderExit {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.08);
+    filter: blur(12px);
+    pointer-events: none;
+    visibility: hidden;
+  }
+}
+
+.preloader-fade-out {
+  animation: preloaderExit 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+/* Reduce Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
